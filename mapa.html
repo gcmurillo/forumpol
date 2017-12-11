@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MAPA | "El foro mas cool de toda la ESPOL"</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href= "css/estilo.css" />
+    <link href="espol.ico" rel = "shortcut icon"/>﻿    
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+        width: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cabecera" class="col-12">
+      <span class="logo col-1"><img class ="imagen" src="img/espol.png" alt="icono"></span>
+      <h2 class = 'col-9'>FORUMPOL</h2>
+      <div id="header-opts" class="col-2">
+        <div id="search" class="col-7">
+          <form action="" class="search-form">
+              <div class="form-group has-feedback">
+                  <label for="search" class="sr-only">buscar</label>
+                  <input type="text" class="form-control" name="search" id="search" placeholder="Buscar...">
+                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
+              </div>
+          </form>
+        </div>
+        <h4 class="col-5"><a href="#">Iniciar Sesion</a></h4>
+      </div>
+    </div>
+    <nav id="navegation-bar" class="col-12">
+      <ul id="menu">
+        <li class="elemento-opcion"><a href="index.html">Inicio</a></li>
+        <li class="elemento-opcion"><a href="galeria.html">Galeria</a></li>
+        <li class="elemento-opcion"><a href="mapa.html">Mapa</a></li>
+        <li class="elemento-opcion"><a href="fechas.html">Fechas Históricas</a></li>
+        <li class="elemento-opcion"><a href="acercaDe.html">Acerca de nosotros</a></li>
+      </ul>
+    </nav>
+    <!--NAVEGACION RESPONSIVE-->
+         <nav class="navbar navbar-default navbar-fixed-top responsive-nav">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">FORUMPOL</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+                <li><a href="mapa.html">Mapa</a></li>
+                <li><a href="fechas.html">Fechas Históricas</a></li>
+                <li><a href="acercaDe.html">Acerca de nosotros</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+    <!--fin menu responsive-->
+
+    <div id="map"></div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script>
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
+
+      function initMap() {
+        // Try HTML5 geolocation.
+        if (!navigator.geolocation) {
+          // Browser doesn't support Geolocation
+          var infoWindow = new google.maps.InfoWindow({map: map});
+          handleLocationError(false, infoWindow, map.getCenter());
+        } else {
+          var location = {lat: -2.148146, lng: -79.964489};
+
+          var map = new google.maps.Map(document.getElementById('map'), {
+            center: location,
+            zoom: 18
+          });
+
+          var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            title: '¡Hola! :)'
+          });
+
+          marker.setMap(map);
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+      }
+    </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?AIzaSyAog-FZUnmXZzX09HBcSPPhfzoK3NTE46E=AIzaSyDobMq2MYdR5wZQx9E0IwPWbewBylsnLc8&callback=initMap">
+    </script>
+  </body>
+</html>
